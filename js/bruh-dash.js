@@ -15,8 +15,8 @@ global.bruhdash = {
   },
 
   // returns the last element of an array
-  last: function () {
-
+  last: function (arr) {
+    return arr[arr.length - 1];
   },
 
   // returns the index of the first matching element from left to right
