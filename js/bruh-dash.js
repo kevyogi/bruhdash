@@ -74,8 +74,17 @@ global.bruhdash = {
   },
 
   // returns a slice of array with n elements dropped from the beignning
-  drop: function(){
-
+  drop: function(arr, num){
+    var newArray = [];
+    for(var i = 0; i < arr.length; i++){
+      if(i >= num){
+        newArray.push(arr[i]);
+      }else if(num === undefined){
+        arr.splice(0, 1);
+        return arr;
+      }
+    }
+    return newArray;
   },
 
   // returns a slice of array with n elements dropped from the end
