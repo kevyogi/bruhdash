@@ -153,11 +153,13 @@ global.bruhdash = {
   },
 
   // removes all given values from an array
-  pull: function (arr, tuple) {
+  pull: function (arr, valueArray) {
     for(var i = arr.length - 1; i >= 0; i--){
-      if(arr[i] === tuple[0] || arr[i] === tuple[1]){
+      for(var j = valueArray.length - 1; j >= 0; j--){
+        if(arr[i] === valueArray[j]){
         arr.splice(i, 1);
-      }
+        }
+      }  
     }
     return arr;
   },
