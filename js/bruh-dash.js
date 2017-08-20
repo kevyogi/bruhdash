@@ -190,8 +190,15 @@ global.bruhdash = {
   },
 
   // returns an array with specified values excluded
-  difference: function() {
-
+  difference: function(arr1, arr2) {
+    for(var i = arr1.length - 1; i >= 0; i-- ){
+      for(var j = arr2.length - 1 ;j >= 0; j--){
+        if(arr1[i] === arr2[j]){
+          arr1.splice(i, 1);
+        }
+      }
+    }
+    return arr1;
   },
 
   /*******************
