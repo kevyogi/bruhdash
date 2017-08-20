@@ -141,8 +141,15 @@ global.bruhdash = {
 
   // fills elements of array with specified value from the start index
   // up to but not including the end index
-  fill: function() {
-
+  fill: function(arr, value, start, end) {
+    for(var i = 0; i < arr.length; i++){
+      if(i >= start && i < end){
+        arr.splice(i, 1, value);
+      }else if(start === undefined && end === undefined){
+        arr.splice(i, 1, value);
+      }
+    }
+    return arr;
   },
 
   // removes all given values from an array
