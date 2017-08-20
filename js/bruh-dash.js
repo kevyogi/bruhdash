@@ -31,10 +31,12 @@ global.bruhdash = {
   },
 
   // returns the index of the first matching element from left to right
-  lastIndexof: function (arr, num) {
+  lastIndexOf: function (arr, num) {
     for(var i = arr.length - 1; i >= 0; i--){
       if(arr[i] === num){
         return i;
+      }else if(i === 0){
+        return -1;
       }
     }
   },
