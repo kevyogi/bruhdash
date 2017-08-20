@@ -163,8 +163,15 @@ global.bruhdash = {
   },
 
   // removes elements of an array corresponding to the given indices
-  pullAt: function () {
-
+  pullAt: function (arr, pullIndices) {
+    for(var i = arr.length - 1; i >=0; i--){
+      for(var j = pullIndices.length - 1; j >= 0; j--){
+        if(i === pullIndices[j]){
+          arr.splice(i, 1);
+        }
+      }
+    }
+    return arr;
   },
 
   // creates an array excluding all the specified values
