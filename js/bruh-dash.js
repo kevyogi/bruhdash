@@ -256,18 +256,18 @@ global.bruhdash = {
 
   // iterates over elements of a collection and invokes iteratee for each element
   // Note: this should work for arrays and objects
-  forEach: function(collection, func) {
+  forEach: function(collection, myFunc) {
     for(var i in collection){
-      func(collection[i]);
+      myFunc(collection[i]);
     }
   },
 
   // creates an array of values by running each element in collection thru the iteratee
   // Note: this should work for arrays and objects
-  map: function(collection, func) {
+  map: function(collection, myFunc) {
     var newArray = [];
     for(var i in collection){
-      newArray.push(func(collection[i]));
+      newArray.push(myFunc(collection[i]));
     }
     return newArray;
   },
@@ -278,8 +278,23 @@ global.bruhdash = {
 
   // iterates over elements of a collection and returns all elements that the predicate returns truthy for
   // Note: this should work for arrays and objects
-  filter: function() {
-
+  filter: function(collection, myFunc) {
+    var truthyArray = [];
+    if(Array.isArray(collection)){
+      for(var i in collection){
+        if(myFunc(collection[i])){
+          truthyArray.push(collection[i]);
+        }
+      }
+    }else if(!Array.isArray(collection)){
+      for(var j in collection){
+        if(!myFunc(collection[j])){
+          delete collection[j];
+        }
+      }
+      return collection;
+    }
+    return truthyArray;
   },
 
   // Reduces the collection to a value which is the accumulated result of running each element
