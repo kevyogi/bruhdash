@@ -237,18 +237,15 @@ global.bruhdash = {
     }else if(size >= arr.length){
       chunkArray.push(arr);
     }else{
-      for(var i = 0; i< arr.length; i++){
-        var tempArray = [];
-        for(var j = 1; j < size; j++){
-          if(arr[i+1]){
-            tempArray.push(arr[i], arr[i+1]);
-            chunkArray.push(tempArray);
-            i++;
-          }else{
+      for(var i = 0; i< arr.length;){
+      var tempArray = [];
+        for(var j = 0; j < size; j++){
+          if(arr[i]){
             tempArray.push(arr[i]);
-            chunkArray.push(tempArray);
+            i++;
           }
         }
+      chunkArray.push(tempArray);
       }
     }
     return chunkArray;
