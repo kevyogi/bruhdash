@@ -232,9 +232,7 @@ global.bruhdash = {
   // creates an array of elements into groups of length of specified size
   chunk: function(arr, size){
     var chunkArray = [];
-    if(arr.length === 0){
-      return arr;
-    }else if(size === 0){
+    if(arr.length === 0 || size === 0){
       return chunkArray;
     }else if(size >= arr.length){
       chunkArray.push(arr);
