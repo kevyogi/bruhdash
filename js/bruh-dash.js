@@ -299,16 +299,9 @@ global.bruhdash = {
   // Note: this should work for arrays and objects
   reduce: function(collection, myFunc) {
     var result = 0;
-    var arrLength = collection.length;
-    var objLength = Object.keys(collection).length;
-    if(Array.isArray(collection)){
-      for(var i in collection){
-        result = myFunc(arrLength, collection[i]);
-      }
-    }else if(!Array.isArray(collection)){
-      for(var j in collection){
-        result = myFunc(objLength, collection[j]);
-      }
+    var coLength = Object.keys(collection).length;
+    for(var i in collection){
+      result = myFunc(coLength, collection[i]);
     }
     return result;
   }
