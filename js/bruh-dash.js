@@ -236,7 +236,7 @@ global.bruhdash = {
       return chunkArray;
     }else{
       for(var i = 0; i < arr.length;){
-      var chunks = [];
+        var chunks = [];
         for(var j = 0; j < size; j++){
           if(arr[i]){
             chunks.push(arr[i]);
@@ -297,9 +297,9 @@ global.bruhdash = {
   // Note: this should work for arrays and objects
   reduce: function(collection, myFunc) {
     var result = 0;
-    var coLength = Object.keys(collection).length;
+    // var coLength = Object.keys(collection).length;
     for(var i in collection){
-      result = myFunc(coLength, collection[i]);
+      result = myFunc(result, collection[i]);
     }
     return result;
   }
