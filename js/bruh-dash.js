@@ -74,12 +74,14 @@ global.bruhdash = {
   // returns a slice of array with n elements dropped from the beignning
   drop: function(arr, num){
     var newArray = [];
-    for(var i = 0; i < arr.length; i++){
-      if(i >= num){
-        newArray.push(arr[i]);
-      }else if(num === undefined){
-        arr.splice(0, 1);
-        return arr;
+    if(num === undefined){
+      newArray = arr;
+      newArray.shift();
+    }else{
+      for(var i = 0; i < arr.length; i++){
+        if(i >= num){
+          newArray.push(arr[i]);
+        }
       }
     }
     return newArray;
@@ -88,15 +90,13 @@ global.bruhdash = {
   // returns a slice of array with n elements dropped from the end
   dropRight: function(arr, num) {
     var newArray = [];
-    for(var i = arr.length - 1; i >= 0; i--){
-      if(i < arr.length - num){
-        newArray.unshift(arr[i]);
-      }else if(num === 0){
-        return arr;
-      }else if(num === undefined){
-        arr.splice(i,1);
-        return arr;
-      }
+    if(num === undefined){
+      newArray = arr;
+      newArray.pop();
+    }else{
+      for(var i = 0; i < arr.length - num; i++){
+        newArray.push(arr[i]);
+      }      
     }
     return newArray;
   },
@@ -104,16 +104,15 @@ global.bruhdash = {
   // creates a slice of an array with n elements taken from the beginning
   take: function (arr, num) {
     var takeArray = [];
-    for(var i = 0; i < arr.length; i++){
-      if(i < num){
-        takeArray.push(arr[i]);
-      }else if(num === undefined){
-        takeArray.push(arr[0]);
-        return takeArray;
-      }else if(num === 0){
-        return takeArray;
-      }else if(num > arr.length){
-        return arr;
+    if(num === undefined){
+      takeArray.push(arr[0]);
+    }else if(num === 0){
+      takeArray = takeArray;
+    }else{
+      for(var i = 0; i < num; i++){
+        if(arr[i]){
+          takeArray.push(arr[i]);
+        }
       }
     }
     return takeArray;
@@ -122,16 +121,17 @@ global.bruhdash = {
   // creates a slice of an array with n elements taken from the end
   takeRight: function (arr, num) {
     var takeRightArray = [];
-    for(var i = arr.length - 1; i >= 0; i--){
-      if(i > arr.length - num - 1){
-        takeRightArray.unshift(arr[i]);
-      }else if(num === undefined){
-        takeRightArray.push(arr[i]);
-        return takeRightArray;
-      }else if(num === 0){
-        return takeRightArray;
-      }else if(num > arr.length){
-        return arr;
+    if(num === undefined){
+      takeRightArray.push(arr[arr.length - 1]);
+    }else if(num === 0){
+      takeRightArray = takeRightArray;
+    }else if(num > arr.length){
+      takeRightArray = arr;
+    }else{
+      for(var i = arr.length - 1; i >= 0; i--){
+        if(i > arr.length - num - 1){
+          takeRightArray.unshift(arr[i]);
+        }
       }
     }
     return takeRightArray;
