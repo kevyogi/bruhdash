@@ -179,14 +179,12 @@ global.bruhdash = {
   // creates an array excluding all the specified values
   without: function(arr, specifiedValues) {
     var newArray = [];
-    for(var i = arr.length - 1; i >= 0; i--){
-      for(var j = specifiedValues.length - 1; j>=0; j--){
-        if(arr[i] === specifiedValues[j]){
-          arr.splice(i, 1);
-        }
+    for(var i = 0; i < arr.length; i++){
+      if(specifiedValues.indexOf(arr[i]) === -1){
+        newArray.push(arr[i]);
       }
     }
-    return arr;
+    return newArray;
   },
 
   // returns an array with specified values excluded
