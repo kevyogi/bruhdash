@@ -234,10 +234,8 @@ global.bruhdash = {
     var chunkArray = [];
     if(arr.length === 0 || size === 0){
       return chunkArray;
-    }else if(size >= arr.length){
-      chunkArray.push(arr);
     }else{
-      for(var i = 0; i< arr.length;){
+      for(var i = 0; i < arr.length;){
       var tempArray = [];
         for(var j = 0; j < size; j++){
           if(arr[i]){
