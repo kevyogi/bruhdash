@@ -236,14 +236,14 @@ global.bruhdash = {
       return chunkArray;
     }else{
       for(var i = 0; i < arr.length;){
-      var tempArray = [];
+      var chunks = [];
         for(var j = 0; j < size; j++){
           if(arr[i]){
-            tempArray.push(arr[i]);
+            chunks.push(arr[i]);
             i++;
           }
         }
-      chunkArray.push(tempArray);
+      chunkArray.push(chunks);
       }
     }
     return chunkArray;
