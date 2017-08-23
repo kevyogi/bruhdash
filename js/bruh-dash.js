@@ -187,14 +187,13 @@ global.bruhdash = {
 
   // returns an array with specified values excluded
   difference: function(arr1, arr2) {
-    for(var i = arr1.length - 1; i >= 0; i-- ){
-      for(var j = arr2.length - 1 ;j >= 0; j--){
-        if(arr1[i] === arr2[j]){
-          arr1.splice(i, 1);
-        }
+    newArray = [];
+    for(var i = 0; i < arr1.length; i++){
+      if(arr2.indexOf(arr1[i]) === -1){
+        newArray.push(arr1[i]);
       }
     }
-    return arr1;
+    return newArray;
   },
 
   /*******************
@@ -271,21 +270,22 @@ global.bruhdash = {
   // Note: this should work for arrays and objects
   filter: function(collection, myFunc) {
     var truthyArray = [];
+    var truthyObj = {};
     if(Array.isArray(collection)){
       for(var i in collection){
         if(myFunc(collection[i])){
           truthyArray.push(collection[i]);
         }
       }
+      return truthyArray;
     }else if(!Array.isArray(collection)){
       for(var j in collection){
-        if(!myFunc(collection[j])){
-          delete collection[j];
+        if(myFunc(collection[j])){
+          truthyObj[j] = collection[j];
         }
       }
-      return collection;
+      return truthyObj;
     }
-    return truthyArray;
   },
 
   // Reduces the collection to a value which is the accumulated result of running each element
