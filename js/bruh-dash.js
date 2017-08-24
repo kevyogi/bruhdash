@@ -257,7 +257,7 @@ global.bruhdash = {
   map: function(collection, myFunc) {
     var newArray = [];
     for(var i in collection){
-      newArray.push(myFunc(collection[i]));
+      newArray.push(myFunc(collection[i], i, collection));
     }
     return newArray;
   },
