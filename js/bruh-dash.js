@@ -248,7 +248,7 @@ global.bruhdash = {
   // Note: this should work for arrays and objects
   forEach: function(collection, myFunc) {
     for(var i in collection){
-      myFunc(collection[i]);
+      myFunc(collection[i], i, collection);
     }
   },
 
@@ -293,7 +293,6 @@ global.bruhdash = {
   // Note: this should work for arrays and objects
   reduce: function(collection, myFunc) {
     var result = 0;
-    // var coLength = Object.keys(collection).length;
     for(var i in collection){
       result = myFunc(result, collection[i]);
     }
